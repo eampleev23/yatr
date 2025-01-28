@@ -6,7 +6,6 @@ import (
 	"log"
 )
 
-// test
 func main() {
 	err := run()
 	if err != nil {
