@@ -1,6 +1,10 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"github.com/eampleev23/yatr/internal/client_config"
+	"log"
+)
 
 func main() {
 	err := run()
@@ -10,5 +14,7 @@ func main() {
 }
 
 func run() error {
-	c, err := client_config.NewConfig()
+	c := client_config.NewConfig()
+	fmt.Println(c)
+	return nil
 }
