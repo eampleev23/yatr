@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import "log"
 
 func main() {
-	fmt.Println("Hello World")
+	err := run()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func run() error {
+	c, err := client_config.NewConfig()
 }
