@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/eampleev23/yatr/internal/client_config"
 	"log"
+	"net/http"
 	url2 "net/url"
 )
 
@@ -22,5 +24,15 @@ func run() error {
 	}
 	fmt.Println("c", c)
 	fmt.Println("url:", url)
+
+	jsonDataStr := `{"queue": "ECODEVTEST", "summary": "Test Issue", "parent":"ECODEVTEST-1968", "type": "milestone", "assignee": "em.ampleev@svo.air.loc"}`
+	jsonData := []byte(jsonDataStr)
+
+	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
+	if err != nil {
+		fmt.Println("Ошибка формирования запроса, попробуйте обновить клиент")
+		return fmt.Errorf("http.NewRequest failed %w", err)
+	}
+	fmt.Println("request", request)
 	return nil
 }
