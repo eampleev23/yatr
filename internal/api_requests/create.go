@@ -4,11 +4,13 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/eampleev23/yatr/internal/client_config"
+	"github.com/eampleev23/yatr/internal/models"
 	"net/http"
 	url2 "net/url"
 )
 
-func Create(c *client_config.Config) error {
+func Create(c *client_config.Config, newIssueModel models.NewIssue) error {
+
 	url, err := url2.JoinPath("https://api.tracker.yandex.net/", "v2/issues/")
 	if err != nil {
 		return fmt.Errorf("url2.JoinPath failed %w", err)
@@ -16,7 +18,19 @@ func Create(c *client_config.Config) error {
 	fmt.Println("c", c)
 	fmt.Println("url:", url)
 
-	jsonDataStr := `{"queue": "ECODEVTEST", "summary": "Feature 1141", "type": "feature", "project": 133, "start": "2025-01-30", "dueDate": "2025-02-05", "author":"vs.stepanov@svo.air.loc", "description":"Описание Фичи тестовое","assignee": "em.ampleev@svo.air.loc"}`
+	jsonDataStr := `{
+  "queue": "` + newIssueModel.Queue + `",
+  "summary": "` + newIssueModel.Summary + `",
+  "type": "` + newIssueModel.Type + `",
+  "project": ` + newIssueModel.Project + `,
+  "start": "` + newIssueModel.Start + `",
+  "dueDate": "` + newIssueModel.DueDate + `",
+  "description": "` + newIssueModel.Description + `",
+  "assignee": "` + newIssueModel.Assignee + `",
+  "author": "` + newIssueModel.Author + `",
+  "priority": "` + newIssueModel.Priority + `"
+}`
+	fmt.Println("jsonDataStr", jsonDataStr)
 	jsonData := []byte(jsonDataStr)
 
 	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
