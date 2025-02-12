@@ -2,6 +2,7 @@ package api_requests
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"github.com/eampleev23/yatr/internal/client_config"
 	"github.com/eampleev23/yatr/internal/models"
@@ -15,8 +16,6 @@ func Create(c *client_config.Config, newIssueModel models.NewIssue) error {
 	if err != nil {
 		return fmt.Errorf("url2.JoinPath failed %w", err)
 	}
-	fmt.Println("c", c)
-	fmt.Println("url:", url)
 
 	jsonDataStr := `{
   "queue": "` + newIssueModel.Queue + `",
@@ -30,7 +29,6 @@ func Create(c *client_config.Config, newIssueModel models.NewIssue) error {
   "author": "` + newIssueModel.Author + `",
   "priority": "` + newIssueModel.Priority + `"
 }`
-	fmt.Println("jsonDataStr", jsonDataStr)
 	jsonData := []byte(jsonDataStr)
 
 	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
@@ -44,9 +42,25 @@ func Create(c *client_config.Config, newIssueModel models.NewIssue) error {
 
 	response, err := c.HttpClient.Do(request)
 	if err != nil {
-		fmt.Println("Ошибка получения ответа, обратитесь к администратору")
 		return fmt.Errorf("c.HttpClient.Do failed %w", err)
 	}
-	fmt.Println("status code =", response.StatusCode)
+
+	if response.StatusCode != http.StatusCreated {
+		return fmt.Errorf("response status code not 201, but: %d", response.StatusCode)
+	}
+	fmt.Println(newIssueModel.Type, newIssueModel.Summary, "успешно создана..")
+	// Получаем в ответ ID созданной таски
+	var newIssueResponse models.NewIssueResponse
+	var buf bytes.Buffer
+	// читаем тело запроса
+	_, err = buf.ReadFrom(response.Body)
+	if err != nil {
+		return fmt.Errorf("buf.ReadFrom failed %w", err)
+	}
+	// десериализуем JSON в newIssueResponse
+	if err = json.Unmarshal(buf.Bytes(), &newIssueResponse); err != nil {
+		return fmt.Errorf("json.Unmarshal failed %w", err)
+	}
+	fmt.Println("createdKey= ", newIssueResponse.Key)
 	return nil
 }
