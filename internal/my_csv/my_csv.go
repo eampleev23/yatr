@@ -2,13 +2,15 @@ package my_csv
 
 import (
 	"encoding/csv"
-	"io/ioutil"
+	"fmt"
 	"log"
+	"os"
 	"strings"
 )
 
 func CsvParse(fileName string) [][]string {
-	csvTheFreshestFile, err := ioutil.ReadFile(fileName)
+
+	csvTheFreshestFile, err := os.ReadFile(fileName)
 
 	if err != nil {
 		log.Fatal(err)
@@ -23,4 +25,18 @@ func CsvParse(fileName string) [][]string {
 		log.Fatal(err)
 	}
 	return theFreshestData
+}
+
+func CsvSave(fileName string, data [][]string) error {
+	fileForSaving, err := os.Create(fileName)
+	if err != nil {
+		return fmt.Errorf("error while creating file: %v", err)
+	}
+	defer fileForSaving.Close()
+	writer := csv.NewWriter(fileForSaving)
+	writer.Comma = ';'
+	writer.UseCRLF = true
+	writer.WriteAll(data)
+	writer.Flush()
+	return nil
 }

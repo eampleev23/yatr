@@ -1,6 +1,7 @@
 package models
 
 type NewIssue struct {
+	Key         string `json:"key"`
 	Queue       string `json:"queue"`
 	Summary     string `json:"summary"`
 	Type        string `json:"type"`

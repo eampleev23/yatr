@@ -39,11 +39,18 @@ func run() error {
 			newIssues[i-1].Parent = result[i][11]
 			newIssues[i-1].Priority = result[i][12]
 
-			if err := api_requests.Create(c, newIssues[i-1]); err != nil {
-				return fmt.Errorf("api_requests.Create failed: %w", err)
+			createdKey, err := api_requests.Create(c, newIssues[i-1])
+			if err != nil {
+				return fmt.Errorf("create issues: %w", err)
 			}
-		}
+			newIssues[i-1].Key = createdKey
+			result[i][1] = createdKey
 
+		}
+		err := my_csv.CsvSave(c.FilePath, result)
+		if err != nil {
+			return fmt.Errorf("save issues: %w", err)
+		}
 	}
 	return nil
 }
