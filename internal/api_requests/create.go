@@ -21,13 +21,16 @@ func Create(c *client_config.Config, newIssueModel models.NewIssue) (string, err
   "queue": "` + newIssueModel.Queue + `",
   "summary": "` + newIssueModel.Summary + `",
   "type": "` + newIssueModel.Type + `",
-  "project": ` + newIssueModel.Project + `,
-  "start": "` + newIssueModel.Start + `",
-  "dueDate": "` + newIssueModel.DueDate + `",
-  "description": "` + newIssueModel.Description + `",
-  "assignee": "` + newIssueModel.Assignee + `",
-  "author": "` + newIssueModel.Author + `",
-  "priority": "` + newIssueModel.Priority + `"
+  "project": ` + newIssueModel.Project + `,`
+	if newIssueModel.Type != "milestone" {
+		jsonDataStr += `"start": "` + newIssueModel.Start + `",`
+	}
+	jsonDataStr += `
+	"dueDate": "` + newIssueModel.DueDate + `",
+		"description": "` + newIssueModel.Description + `",
+		"assignee": "` + newIssueModel.Assignee + `",
+		"author": "` + newIssueModel.Author + `",
+		"priority": "` + newIssueModel.Priority + `"
 }`
 	jsonData := []byte(jsonDataStr)
 

@@ -14,6 +14,12 @@ func GenerateIssues(c *client_config.Config) error {
 	var newIssues []models.NewIssue
 
 	for i := 1; i < len(result); i++ {
+
+		if result[i][1] != "" {
+			fmt.Println("По задаче", result[i][3], "уже заполнен KEY:", result[i][1], ". Пропускаем...")
+			continue
+		}
+
 		newIssues = append(newIssues, models.NewIssue{})
 		newIssues[i-1].Queue = result[i][2]
 		newIssues[i-1].Summary = result[i][3]

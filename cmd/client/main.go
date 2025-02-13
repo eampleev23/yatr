@@ -5,7 +5,6 @@ import (
 	"github.com/eampleev23/yatr/internal/client_config"
 	"github.com/eampleev23/yatr/internal/services"
 	"log"
-	"unicode/utf8"
 )
 
 func main() {
@@ -22,11 +21,10 @@ func run() error {
 		if err := services.GenerateIssues(c); err != nil {
 			return fmt.Errorf("could not generate issues: %w", err)
 		}
+	} else {
+		if err := services.UpdateIssues(c); err != nil {
+			return fmt.Errorf("could not update issues: %w", err)
+		}
 	}
 	return nil
-}
-
-func trimFirstRune(s string) string {
-	_, i := utf8.DecodeRuneInString(s)
-	return s[i:]
 }
