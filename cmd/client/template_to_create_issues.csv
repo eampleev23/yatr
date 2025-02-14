@@ -1,11 +1,11 @@
 ﻿#;Ключ (не заполняется при создании элементов);Очередь;Заголовок (соответствует правилам: https://wiki.yandex.ru/homepage/krap-team/project/dev-management/pravila-raboty-s-yandex-tracker-v-processe-razrabo/versija/ispol/pravila-formulirovanija-zagolovkov-dlja-fich-i-jep/);"Тип (Веха - ""milestone"", Эпик - ""epicrm"", Фича -""feature"", User Story - ""story"", Задача - ""task"", Ошибка - ""bug"")";Проект;Планируемая дата старта;Планируемая дата завершения (для Целей(Вех) совпадает с планируемой датой старта);Описание (соответствует правилам: https://wiki.yandex.ru/homepage/krap-team/project/dev-management/pravila-raboty-s-yandex-tracker-v-processe-razrabo/versija/ispol/opisanija-celejj-jepikov-fich-i-user-stories/ );"Исполнитель (до @ как корп.почта, после @ ""svo.ai.loc"")";"(до @ как корп.почта, после @ ""svo.ai.loc"")";Родительский элемент если есть;Приоритет (trivial, minor, normal, critical, blocker)
-;ECODEVTEST-2283;ECODEVTEST;Разработать конфигуратор текста на барах в графе технолога;milestone;133;`2025-01-30;`2025-02-05;ФТ-4567-987;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;ECODEVTEST-1968;trivial
-;ECODEVTEST-2284;ECODEVTEST;Заголовок!!!;epicrm;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;minor
-;ECODEVTEST-2285;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;normal
-;ECODEVTEST-2286;ECODEVTEST;Заголовок!!!;story;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;critical
-;ECODEVTEST-2287;ECODEVTEST;Заголовок!!!;task;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;blocker
-;ECODEVTEST-2288;ECODEVTEST;Заголовок!!!;bug;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;trivial
-;ECODEVTEST-2289;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;minor
-;ECODEVTEST-2290;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;normal
-;ECODEVTEST-2291;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;critical
-;ECODEVTEST-2292;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;vs.stepanov@svo.air.loc;ECODEVTEST-2283;minor
+;ECODEVTEST-2305;ECODEVTEST;Разработать конфигуратор текста на барах в графе технолога;milestone;133;`2025-01-30;`2025-02-05;ФТ-4567-987;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;ECODEVTEST-1968;trivial
+;ECODEVTEST-2306;ECODEVTEST;Заголовок!!!;epicrm;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;minor
+;ECODEVTEST-2307;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;normal
+;ECODEVTEST-2308;ECODEVTEST;Заголовок!!!;story;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;critical
+;ECODEVTEST-2309;ECODEVTEST;Заголовок!!!;task;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;blocker
+;ECODEVTEST-2310;ECODEVTEST;Заголовок!!!;bug;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;trivial
+;ECODEVTEST-2311;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;minor
+;ECODEVTEST-2312;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;normal
+;ECODEVTEST-2313;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;em.ampleev@svo.air.loc;em.ampleev@svo.air.loc;;critical
+;;ECODEVTEST;Заголовок!!!;feature;133;`2025-01-30;`2025-02-05;Описание;vs.stepanov@svo.air.loc;vs.stepanov@svo.air.loc;ECODEVTEST-2283;minor

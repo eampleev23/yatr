@@ -17,26 +17,13 @@ func Create(c *client_config.Config, newIssueModel models.NewIssue) (string, err
 		return "", fmt.Errorf("url2.JoinPath failed %w", err)
 	}
 
-	jsonDataStr := `{
-  "queue": "` + newIssueModel.Queue + `",
-  "summary": "` + newIssueModel.Summary + `",
-  "type": "` + newIssueModel.Type + `",
-  "project": ` + newIssueModel.Project + `,`
-	if newIssueModel.Type != "milestone" {
-		jsonDataStr += `"start": "` + newIssueModel.Start + `",`
+	if newIssueModel.Type == "milestone" {
+		newIssueModel.Start = ""
 	}
-	jsonDataStr += `
-	"dueDate": "` + newIssueModel.DueDate + `",
-		"description": "` + newIssueModel.Description + `",
-		"assignee": "` + newIssueModel.Assignee + `",
-		"author": "` + newIssueModel.Author + `",
-		"priority": "` + newIssueModel.Priority + `"
-}`
-	jsonData := []byte(jsonDataStr)
+	jsonData, err := json.Marshal(newIssueModel)
 
 	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
 	if err != nil {
-		fmt.Println("Ошибка формирования запроса, попробуйте обновить клиент")
 		return "", fmt.Errorf("http.NewRequest failed %w", err)
 	}
 	request.Header.Set("Content-Type", "application/json; charset=UTF-8")

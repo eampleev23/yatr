@@ -1,16 +1,16 @@
 package models
 
 type NewIssue struct {
-	Key         string `json:"key"`
-	Queue       string `json:"queue"`
-	Summary     string `json:"summary"`
-	Type        string `json:"type"`
-	Project     string `json:"project"`
-	Start       string `json:"start"`
-	DueDate     string `json:"due_date"`
-	Author      string `json:"author"`
-	Description string `json:"description"`
-	Assignee    string `json:"assignee"`
-	Parent      string `json:"parent"`
-	Priority    string `json:"priority"`
+	Key         string `json:"key,omitempty"`
+	Queue       string `json:"queue,omitempty"`
+	Summary     string `json:"summary,omitempty"`
+	Type        string `json:"type,omitempty"`
+	Project     int    `json:"project,omitempty"`
+	Start       string `json:"start,omitempty"`
+	DueDate     string `json:"dueDate,omitempty"`
+	Author      string `json:"author,omitempty"`
+	Description string `json:"description,omitempty"`
+	Assignee    string `json:"assignee,omitempty"`
+	Parent      string `json:"parent,omitempty"`
+	Priority    string `json:"priority,omitempty"`
 }

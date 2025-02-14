@@ -6,6 +6,7 @@ import (
 	"github.com/eampleev23/yatr/internal/client_config"
 	"github.com/eampleev23/yatr/internal/models"
 	"github.com/eampleev23/yatr/internal/my_csv"
+	"strconv"
 	"unicode/utf8"
 )
 
@@ -24,7 +25,11 @@ func GenerateIssues(c *client_config.Config) error {
 		newIssues[i-1].Queue = result[i][2]
 		newIssues[i-1].Summary = result[i][3]
 		newIssues[i-1].Type = result[i][4]
-		newIssues[i-1].Project = result[i][5]
+		prj, err := strconv.Atoi(result[i][5])
+		if err != nil {
+			fmt.Errorf("strconv fail %s", err.Error())
+		}
+		newIssues[i-1].Project = prj
 		newIssues[i-1].Start = trimFirstRune(result[i][6])
 		newIssues[i-1].DueDate = trimFirstRune(result[i][7])
 		newIssues[i-1].Description = result[i][8]

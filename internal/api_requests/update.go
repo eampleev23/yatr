@@ -31,6 +31,8 @@ type UpdateRequest struct {
 	Priority    Priority `json:"priority,omitempty"`
 	Parent      Parent   `json:"parent,omitempty"`
 	Assignee    string   `json:"assignee,omitempty"`
+	CreatedBy   string   `json:"createdBy,omitempty"`
+	Project     int      `json:"project,omitempty"`
 }
 
 func Update(c *client_config.Config, updateIssueModel models.NewIssue) error {
@@ -51,10 +53,13 @@ func Update(c *client_config.Config, updateIssueModel models.NewIssue) error {
 		Parent: Parent{
 			Key: updateIssueModel.Parent,
 		},
-		Assignee: updateIssueModel.Assignee,
+		Assignee:  updateIssueModel.Assignee,
+		CreatedBy: updateIssueModel.Author,
+		Project:   updateIssueModel.Project,
 	}
 
 	jsonData, err := json.Marshal(req)
+	fmt.Println(string(jsonData))
 	if err != nil {
 		return fmt.Errorf("json.Marshal failed %w", err)
 	}
