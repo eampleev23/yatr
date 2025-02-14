@@ -17,6 +17,8 @@ func main() {
 func run() error {
 	c := client_config.NewConfig()
 
+	fmt.Println("c.IsCreating=", c.IsCreating)
+
 	if c.IsCreating {
 		if err := services.GenerateIssues(c); err != nil {
 			return fmt.Errorf("could not generate issues: %w", err)
