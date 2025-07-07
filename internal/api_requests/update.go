@@ -63,7 +63,8 @@ func Update(c *client_config.Config, updateIssueModel models.NewIssue) error {
 	if err != nil {
 		return fmt.Errorf("json.Marshal failed %w", err)
 	}
-	request, err := http.NewRequest("PATCH", url, bytes.NewBuffer(jsonData))
+	//request, err := http.NewRequest("PATCH", url, bytes.NewBuffer(jsonData))
+	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonData))
 	if err != nil {
 		return fmt.Errorf("http.NewRequest failed %w", err)
 	}

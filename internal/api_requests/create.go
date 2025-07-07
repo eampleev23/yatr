@@ -34,6 +34,7 @@ func Create(c *client_config.Config, newIssueModel models.NewIssue) (string, err
 	if err != nil {
 		return "", fmt.Errorf("c.HttpClient.Do failed %w", err)
 	}
+	fmt.Println(string(jsonData))
 
 	if response.StatusCode != http.StatusCreated {
 		return "", fmt.Errorf("response status code not 201, but: %d", response.StatusCode)
